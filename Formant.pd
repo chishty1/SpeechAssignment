@@ -1,4 +1,4 @@
-#N canvas 791 69 706 654 10;
+#N canvas 439 68 706 654 10;
 #X obj 221 -345 adc~;
 #X floatatom 36 -143 5 0 0 0 - - -;
 #X floatatom 108 -143 5 0 0 0 - - -;
@@ -43,7 +43,7 @@
 #X obj 436 70 r toggle;
 #X obj 355 101 spigot;
 #X obj -70 76 spigot;
-#X obj -71 147 s F1sd;
+#X obj -69 161 s F1sd;
 #X obj 508 97 spigot;
 #X obj 510 167 s F2sd;
 #X msg -6 183 relative;
@@ -54,8 +54,9 @@
 #X obj 90 23 r $Clear;
 #X obj 445 155 r $Clear;
 #X obj 456 14 r $Clear;
-#X obj -71 110 std;
 #X obj 510 135 std;
+#X obj -70 111 sd;
+#X floatatom -35 235 5 0 0 0 - - -;
 #X connect 0 0 5 0;
 #X connect 0 0 13 0;
 #X connect 1 0 11 0;
@@ -97,14 +98,13 @@
 #X connect 40 0 39 1;
 #X connect 40 0 23 0;
 #X connect 40 0 43 1;
-#X connect 40 0 55 1;
 #X connect 41 0 42 1;
 #X connect 41 0 21 0;
 #X connect 41 0 45 1;
-#X connect 41 0 56 1;
+#X connect 41 0 55 1;
 #X connect 42 0 37 0;
-#X connect 43 0 55 0;
-#X connect 45 0 56 0;
+#X connect 43 0 56 0;
+#X connect 45 0 55 0;
 #X connect 47 0 32 0;
 #X connect 48 0 31 0;
 #X connect 49 0 50 0;
@@ -112,6 +112,7 @@
 #X connect 52 0 34 0;
 #X connect 53 0 31 0;
 #X connect 54 0 36 0;
-#X connect 55 0 44 0;
-#X connect 56 0 46 0;
+#X connect 55 0 46 0;
+#X connect 56 0 57 0;
+#X connect 56 1 44 0;
 #X coords 0 654 1 653 85 60 0;
