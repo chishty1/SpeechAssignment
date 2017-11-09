@@ -1,6 +1,6 @@
 #N canvas 196 101 468 408 10;
 #X obj 57 106 tgl 18 0 THIS_IS_HERE_TO_GET_RID_OF_THE_OUTLET \$0-dsp-toggle
-dsp 2 9 1 9 -262144 -195568 -33289 0 1;
+dsp 2 9 1 9 -225271 -195568 -33289 1 1;
 #N canvas 382 185 482 356 dsp 0;
 #X obj 11 7 inlet;
 #X obj 92 226 select 0 1;
@@ -52,7 +52,7 @@ dsp 2 9 1 9 -262144 -195568 -33289 0 1;
 #X text 307 84 filter out DC;
 #X obj 8 327 outlet;
 #X obj 14 106 hsl 42 23 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--258113 -1 0 1;
+-258113 -1 1800 1;
 #X connect 0 0 1 0;
 #X connect 2 0 9 0;
 #X connect 3 0 8 0;
