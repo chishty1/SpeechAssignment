@@ -1,0 +1,10 @@
+#N canvas 0 22 450 300 10;
+#X obj 40 73 adc~;
+#X floatatom 39 185 5 0 0 0 - - -;
+#X obj 39 127 output~;
+#X text 24 26 Output~help;
+#X text 115 111 Inlets receive an audio signal;
+#X text 116 154 Outlet send value of volume from slider;
+#X connect 0 0 2 0;
+#X connect 0 1 2 1;
+#X connect 2 0 1 0;

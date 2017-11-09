@@ -1,0 +1,5 @@
+#N canvas 449 320 450 300 10;
+#X obj 193 126 sdmean;
+#X text 108 87 Inlet receives live data to process;
+#X text 97 162 Left outlet outputs Sample Standard Deviation;
+#X text 97 177 Right outlet outputs average;

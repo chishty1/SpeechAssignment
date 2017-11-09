@@ -1,0 +1,6 @@
+#N canvas 539 192 450 300 10;
+#X obj 179 124 loadAudio~;
+#X text 87 65 The inlet takes a 0 or 1 and uses this to;
+#X text 89 79 determine whether a sound file is imported;
+#X text 85 167 The outlet sends the users selected sound file;
+#X text 86 181 to be processed;

@@ -1,29 +1,28 @@
-#N canvas 893 81 1004 767 10;
+#N canvas 575 81 1004 767 10;
 #N canvas 946 42 450 278 (subpatch) 0;
 #X array formant1 50 float 5;
-#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0217391 0
-0 0.0434783 0.934783 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 #X coords 0 1 49 0 200 140 1 0 0;
 #X restore 75 115 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array formant2 50 float 5;
-#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0217391 0.0217391 0 0 0.0434783 0.0434783
-0.0217391 0.0434783 0.478261 0.326087 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 #X coords 0 1 49 0 200 140 1 0 0;
 #X restore 350 117 graph;
 #X obj 77 293 r F1avg;
 #X floatatom 77 266 5 0 0 0 - - -;
 #X obj 352 300 r F2avg;
 #X floatatom 352 270 5 0 0 0 - - -;
-#X obj 134 59 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 134 54 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 239 96 s clearg;
 #X text 387 272 F2 average;
-#X obj 134 74 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 134 69 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 143 97 s toggle;
-#X text 155 74 On/Off;
+#X text 155 67 On/Off;
 #X text 465 64 Microphone;
 #X text 464 51 Recorded Speech;
 #X obj 562 53 vradio 15 1 1 2 empty empty empty 0 -8 0 10 -262144 -1
@@ -69,21 +68,6 @@
 #X obj 124 27 s LevelVolumeAudio;
 #X obj 81 -58 r LevelVolumeAudio;
 #X obj 53 53 output~;
-#N canvas 910 501 351 239 loadaudio 1;
-#X obj 38 26 preRecAudio~;
-#X obj 38 84 *~;
-#X obj 38 147 outlet~;
-#X obj 100 147 s~ audio;
-#X obj 145 9 r BangRecorderAudio;
-#X text 203 39 comment;
-#X text 144 49 Load audio and send;
-#X text 145 63 to formant and voiced;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 1 0 3 0;
-#X connect 4 0 1 1;
-#X connect 4 0 0 0;
-#X restore 124 -2 pd loadaudio;
 #X obj 185 299 r F1sd;
 #X obj 457 303 r F2sd;
 #X floatatom 185 266 5 0 0 0 - - -;
@@ -91,16 +75,15 @@
 #X text 220 266 F1 st dev;
 #X text 494 272 F2 st dev;
 #X msg 205 96 0;
-#X text 156 58 Reset;
+#X text 156 51 Reset;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array voiced 10 float 3;
-#A 0 0.0224719 0.0252809 0.0252809 0.0224719 0.0252809 0.0224719 0.0252809
-0.0252809 0.0224719 0.0252809;
+#A 0 0 0 0 0 0 0 0 0 0 0;
 #X coords 0 1 10 0 200 140 1 0 0;
 #X restore 75 352 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array voiceless 10 float 3;
-#A 0 0.571429 0.142857 0 0 0 0 0 0 0 0;
+#A 0 0 0 0 0 0 0 0 0 0 0;
 #X coords 0 1 10 0 200 140 1 0 0;
 #X restore 344 351 graph;
 #X msg 229 74 clear;
@@ -117,33 +100,47 @@
 #X obj 528 -8 loadbang;
 #X msg 528 15 1;
 #X text 124 -19 Enter Recorded Audio;
-#X obj -30 3 Formant;
+#X obj -30 3 formant;
 #X text 110 507 Voiced avg;
 #X text 111 267 F1 avg;
 #X text 376 509 Unvoiced avg;
 #X obj -30 27 voiced;
 #X text 81 -73 Get volume level;
 #X text 242 27 Send volume level;
+#N canvas 910 501 351 239 loadAudioHelper 1;
+#X obj 38 84 *~;
+#X obj 38 147 outlet~;
+#X obj 100 147 s~ audio;
+#X obj 145 9 r BangRecorderAudio;
+#X text 144 49 Load audio and send;
+#X text 145 63 to formant and voiced;
+#X obj 38 26 loadAudio~;
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 3 0 0 1;
+#X connect 3 0 6 0;
+#X connect 6 0 0 0;
+#X restore 124 -2 pd loadAudioHelper;
 #X connect 2 0 3 0;
 #X connect 4 0 5 0;
-#X connect 6 0 27 0;
-#X connect 6 0 31 0;
+#X connect 6 0 26 0;
+#X connect 6 0 30 0;
 #X connect 9 0 10 0;
 #X connect 14 0 15 0;
-#X connect 14 0 31 0;
+#X connect 14 0 30 0;
 #X connect 16 0 19 0;
 #X connect 16 0 19 1;
 #X connect 18 0 16 1;
 #X connect 19 0 17 0;
-#X connect 20 0 16 0;
+#X connect 20 0 22 0;
 #X connect 21 0 23 0;
-#X connect 22 0 24 0;
-#X connect 27 0 9 0;
-#X connect 31 0 7 0;
-#X connect 33 0 32 0;
-#X connect 35 0 34 0;
+#X connect 26 0 9 0;
+#X connect 30 0 7 0;
+#X connect 32 0 31 0;
+#X connect 34 0 33 0;
+#X connect 37 0 35 0;
 #X connect 38 0 36 0;
-#X connect 39 0 37 0;
-#X connect 42 0 43 0;
-#X connect 43 0 14 0;
+#X connect 41 0 42 0;
+#X connect 42 0 14 0;
+#X connect 51 0 16 0;
 #X coords 0 -1 1 1 530 530 2 50 50;
