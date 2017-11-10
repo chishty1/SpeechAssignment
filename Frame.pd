@@ -27,7 +27,7 @@
 #X text 464 51 Recorded Speech;
 #X obj 562 53 vradio 15 1 1 2 empty empty empty 0 -8 0 10 -262144 -1
 -1 1;
-#N canvas 800 103 478 411 audioInput 0;
+#N canvas 1209 203 478 411 audioInput 0;
 #X obj 42 12 s BangMicrophone;
 #X msg 65 -19 1;
 #X msg 140 -19 0;
@@ -77,14 +77,14 @@
 #X msg 205 96 0;
 #X text 156 51 Reset;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array voiced 10 float 3;
-#A 0 0 0 0 0 0 0 0 0 0 0;
-#X coords 0 1 10 0 200 140 1 0 0;
+#X array voiced 20 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 20 0 200 140 1 0 0;
 #X restore 75 352 graph;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array voiceless 10 float 3;
-#A 0 0 0 0 0 0 0 0 0 0 0;
-#X coords 0 1 10 0 200 140 1 0 0;
+#X array unvoiced 20 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 20 0 200 140 1 0 0;
 #X restore 344 351 graph;
 #X msg 229 74 clear;
 #X floatatom 77 508 5 0 0 0 - - -;
@@ -93,8 +93,6 @@
 #X obj 179 542 r voicedsd;
 #X floatatom 345 510 5 0 0 0 - - -;
 #X floatatom 455 509 5 0 0 0 - - -;
-#X obj 345 549 r voicelessavg;
-#X obj 455 547 r voicelesssd;
 #X text 213 510 Voiced st dev;
 #X text 489 509 Unvoiced st dev;
 #X obj 528 -8 loadbang;
@@ -104,10 +102,9 @@
 #X text 110 507 Voiced avg;
 #X text 111 267 F1 avg;
 #X text 376 509 Unvoiced avg;
-#X obj -30 27 voiced;
 #X text 81 -73 Get volume level;
 #X text 242 27 Send volume level;
-#N canvas 910 501 351 239 loadAudioHelper 1;
+#N canvas 910 501 351 239 loadAudioHelper 0;
 #X obj 38 84 *~;
 #X obj 38 147 outlet~;
 #X obj 100 147 s~ audio;
@@ -121,6 +118,9 @@
 #X connect 3 0 6 0;
 #X connect 6 0 0 0;
 #X restore 124 -2 pd loadAudioHelper;
+#X obj -30 27 voiced;
+#X obj 345 549 r unvoicedavg;
+#X obj 455 547 r unvoicedsd;
 #X connect 2 0 3 0;
 #X connect 4 0 5 0;
 #X connect 6 0 26 0;
@@ -138,9 +138,9 @@
 #X connect 30 0 7 0;
 #X connect 32 0 31 0;
 #X connect 34 0 33 0;
-#X connect 37 0 35 0;
-#X connect 38 0 36 0;
-#X connect 41 0 42 0;
-#X connect 42 0 14 0;
-#X connect 51 0 16 0;
+#X connect 39 0 40 0;
+#X connect 40 0 14 0;
+#X connect 48 0 16 0;
+#X connect 50 0 35 0;
+#X connect 51 0 36 0;
 #X coords 0 -1 1 1 530 530 2 50 50;
